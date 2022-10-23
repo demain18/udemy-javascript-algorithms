@@ -17,5 +17,6 @@ const solution = (arr1, arr2) => {
   return arr1 === arr2 ? true : false;
 };
 
-console.log(solution([1, 2, 3], [4, 1, 9]));
-console.log(solution([1, 2, 3], [1, 9]));
+// console.log(solution([1, 2, 3], [4, 1, 9]));
+// console.log(solution([1, 2, 3], [1, 9]));
+console.log(solution(["aaz"], ["zza"]));
