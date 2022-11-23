@@ -57,6 +57,27 @@ class SinglyLinkedList {
     // 삭제된 노드를 반환한다.
     return current;
   }
+
+  shift() {
+    if (!this.head) return undefined;
+
+    // currentHead에 this.head를 바인딩해준다.
+    var currentHead = this.head;
+
+    // this.head를 currentHead의 다음 노드로 초기화시킨다.
+    this.head = currentHead.next;
+    // this.length값을 1 감소시킨다.
+    this.length--;
+
+    // 만약 노드의 길이가 0이라면 head와 tail을 모두 비운다
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+
+    // 삭제된 노드를 반환한다.
+    return currentHead;
+  }
 }
 
 var list = new SinglyLinkedList();
@@ -64,10 +85,9 @@ list.push("Hello");
 list.push("Goodbye");
 list.push("!");
 
+list.shift();
 console.log(list);
-list.pop();
+list.shift();
 console.log(list);
-list.pop();
-console.log(list);
-list.pop();
+list.shift();
 console.log(list);
