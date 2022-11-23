@@ -78,16 +78,37 @@ class SinglyLinkedList {
     // 삭제된 노드를 반환한다.
     return currentHead;
   }
+
+  unshift(val) {
+    var newNode = new Node(val);
+
+    // 만약 연결 리스트가 비어있다면
+    if (!this.head) {
+      // head와 tail을 newNode로 초기화시킨다.
+      this.head = newNode;
+      this.tail = this.head;
+    }
+    // 만약 연결 리스트에 하나 이상의 노드가 있다면
+    else {
+      // 수동으로 head를 변경해준다.
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+
+    // newNode의 다음 노드를 this.head로 초기화시킨다.
+    newNode.next = this.head;
+    // head를 newNode로 초기화시킨다.
+    this.head = newNode;
+    // length를 1 증가시킨다.
+    this.length++;
+
+    // 연결 리스트를 반환한다.
+    return this;
+  }
 }
 
 var list = new SinglyLinkedList();
 list.push("Hello");
 list.push("Goodbye");
 list.push("!");
-
-list.shift();
-console.log(list);
-list.shift();
-console.log(list);
-list.shift();
-console.log(list);
+console.log(list.unshift("*"));
