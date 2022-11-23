@@ -123,6 +123,21 @@ class SinglyLinkedList {
     // 찾은 노드를 반환한다.
     return current;
   }
+
+  set(index, val) {
+    // get 메소드를 사용해서 foundNode를 반환시킨다.
+    // 해당 변수는 this.head에 '포인터'로 접근한 상태이기 때문에 this값에 접근할 수 있다.
+    var foundNode = this.get(index);
+
+    // 만약 foundNode값이 존재한다면
+    if (foundNode) {
+      // foundNode의 val값을 변경한다.
+      foundNode.val = val;
+      return true;
+    }
+
+    return false;
+  }
 }
 
 var list = new SinglyLinkedList();
@@ -131,4 +146,5 @@ list.push("Goodbye");
 list.push("!");
 list.push("<3");
 list.push(":");
-console.log(list.get(2));
+console.log(list.set(4, "GG"));
+console.log(list);
