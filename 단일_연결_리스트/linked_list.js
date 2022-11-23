@@ -105,10 +105,30 @@ class SinglyLinkedList {
     // 연결 리스트를 반환한다.
     return this;
   }
+
+  get(index) {
+    // index값이 음수이거나 length보다 크다면 null을 반환한다.
+    if (index < 0 || index >= this.length) return null;
+
+    // counter, current(node)를 선언해준다.
+    var counter = 0;
+    var current = this.head;
+
+    // index값에 node가 위치할때까지 다음 노드로 넘어간다.
+    while (counter !== index) {
+      current = current.next;
+      counter++;
+    }
+
+    // 찾은 노드를 반환한다.
+    return current;
+  }
 }
 
 var list = new SinglyLinkedList();
 list.push("Hello");
 list.push("Goodbye");
 list.push("!");
-console.log(list.unshift("*"));
+list.push("<3");
+list.push(":");
+console.log(list.get(2));
