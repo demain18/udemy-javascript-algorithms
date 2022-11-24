@@ -136,15 +136,46 @@ class SinglyLinkedList {
       return true;
     }
 
+    // 찾지 못했다면 false를 반환한다.
     return false;
   }
+
+  insert(index, val) {
+    // index가 음수거나 length보다 크다면 fasle를 반환한다.
+    if (index < 0 || index > this.length) return false;
+
+    // index값이 length와 같다면 push 메소드를 실행한다.
+    if (index === this.length) return this.push(val);
+
+    // index값이 0이라면 unshift 메소드를 실행한다.
+    if (index === 0) return this.unshift(val);
+
+    // newNode를 생성한다.
+    var newNode = new Node(val);
+    // index에서 바로 뒤에 있는 값으로 prev 노드를 가져온다.
+    var prev = this.get(index - 1);
+    // temp에 prev.next 정보를 임시로 저장해놓는다.
+    var temp = prev.next;
+
+    // prev 노드의 next값을 newNode로 초기화시킨다.
+    prev.next = newNode;
+    // newNode의 next값을 미리 저장해둔 temp(바로 위에서 초기화된 prev.next값)을 바인딩해준다.
+    newNode.next = temp;
+
+    // length값을 1 증가시킨다.
+    this.length++;
+
+    // 완료됬으니 true를 반환한다.
+    return true;
+  }
+  // 메소드별 설명 써놓고 push 수도 코드 작성하기
 }
 
 var list = new SinglyLinkedList();
-list.push("Hello");
-list.push("Goodbye");
-list.push("!");
-list.push("<3");
-list.push(":");
-console.log(list.set(4, "GG"));
-console.log(list);
+
+list.push("100");
+list.push("201");
+list.push("250");
+list.push("350");
+list.insert(3, "550");
+console.log(list, list.get(3));
