@@ -187,6 +187,31 @@ class SinglyLinkedList {
     // 완료됬으니 true를 반환한다.
     return true;
   }
+
+  // 리스트에서 index에 위치한 노드를 삭제하고 이전 노드를 다음 노드와 연결
+  remove(index) {
+    // index가 음수거나 length보다 크다면 fasle를 반환한다.
+    if (index < 0 || index > this.length) return false;
+
+    // index값이 0이라면 shift 메소드를 실행한다.
+    if (index === 0) return this.shift(val);
+
+    // index값이 length - 1와 같다면 pop 메소드를 실행한다.
+    if (index === this.length - 1) return this.pop(val);
+
+    // prevNode에 index - 1에 위치한 노드를 바인딩한다.
+    var prevNode = this.get(index - 1);
+    // removed에 prevNode의 다음 노드를 바인딩한다.
+    var removed = prevNode.next;
+    // prevNode의 다음 노드를 removed.next로 바인딩함으로써 removed 노드를 리스트에서 제거한다.
+    prevNode.next = removed.next;
+
+    // length을 1 감소시킨다.
+    this.length--;
+
+    // 삭제된 노드인 removed를 반환한다.
+    return removed;
+  }
 }
 
 var list = new SinglyLinkedList();
@@ -195,5 +220,5 @@ list.push("100");
 list.push("201");
 list.push("250");
 list.push("350");
-list.insert(3, "550");
-console.log(list, list.get(3));
+list.remove(2);
+console.log(list.get(2));
