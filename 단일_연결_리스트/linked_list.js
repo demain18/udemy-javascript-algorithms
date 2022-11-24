@@ -12,22 +12,35 @@ class SinglyLinkedList {
     this.length = 0;
   }
 
+  // 리스트 뒤에 노드 추가
   push(val) {
+    // val로 새로운 노드를 생성한다.
     var newNode = new Node(val);
 
+    // 만약 연결 리스트가 비어있다면
     if (!this.head) {
+      // head, tail을 초기화시킨다.
       this.head = newNode;
       this.tail = this.head;
-    } else {
+    }
+    // 만약 아니라면
+    else {
+      // tail.next를 newNode로 초기화시키고
       this.tail.next = newNode;
+      // tail을 newNode로 초기화시킨다.
       this.tail = newNode;
     }
 
+    // length를 1 증가시킨다.
     this.length++;
+
+    // 리스트를 반환한다.
     return this;
   }
 
+  // 리스트 뒤에서 노드 제거
   pop() {
+    // 만약 연결 리스트가 비어있다면 undefined를 반환한다.
     if (!this.head) return undefined;
 
     // 첫번째 노드로 current와 newTail을 초기화시켜 준다.
@@ -58,7 +71,9 @@ class SinglyLinkedList {
     return current;
   }
 
+  // 리스트 앞에서 노드 제거
   shift() {
+    // 만약 연결 리스트가 비어있다면 undefined를 반환한다.
     if (!this.head) return undefined;
 
     // currentHead에 this.head를 바인딩해준다.
@@ -79,6 +94,7 @@ class SinglyLinkedList {
     return currentHead;
   }
 
+  // 리스트 앞에서 노드 추가
   unshift(val) {
     var newNode = new Node(val);
 
@@ -106,6 +122,7 @@ class SinglyLinkedList {
     return this;
   }
 
+  // 리스트에서 index에 위치한 노드 반환
   get(index) {
     // index값이 음수이거나 length보다 크다면 null을 반환한다.
     if (index < 0 || index >= this.length) return null;
@@ -124,6 +141,7 @@ class SinglyLinkedList {
     return current;
   }
 
+  // 리스트에서 indexdp 위치한 노드의 값 변경
   set(index, val) {
     // get 메소드를 사용해서 foundNode를 반환시킨다.
     // 해당 변수는 this.head에 '포인터'로 접근한 상태이기 때문에 this값에 접근할 수 있다.
@@ -140,6 +158,7 @@ class SinglyLinkedList {
     return false;
   }
 
+  // 리스트에서 index에 위치한 노드를 새로 생성한 노드로 교체하고 기존 노드는 한칸 뒤로 보내기
   insert(index, val) {
     // index가 음수거나 length보다 크다면 fasle를 반환한다.
     if (index < 0 || index > this.length) return false;
@@ -168,7 +187,6 @@ class SinglyLinkedList {
     // 완료됬으니 true를 반환한다.
     return true;
   }
-  // 메소드별 설명 써놓고 push 수도 코드 작성하기
 }
 
 var list = new SinglyLinkedList();
