@@ -212,6 +212,43 @@ class SinglyLinkedList {
     // 삭제된 노드인 removed를 반환한다.
     return removed;
   }
+
+  // 리스트 순서 거꾸로 정렬하기
+  reverse() {
+    // tail과 head를 교환한다.
+    var node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+    // 임시 노드 선언
+    var next;
+    var prev = null;
+
+    for (let i = 0; i < this.length; i++) {
+      // node(this.head)의 next에 위치한 노드를 next에 바인딩한다.
+      next = node.next;
+      // node(this.head)의 next를 prev(null)로 초기화시킨다\.
+      node.next = prev;
+      // prev를 node(this.head)로 초기화시킨다.
+      prev = node;
+      // node를 next(this.head.next)로 초기화시킨다. 이러면 다음 노드를 사용할 수 있게 된다.
+      node = next;
+    }
+
+    // 리스트를 반환한다.
+    return this;
+  }
+
+  // 리스트 시각화
+  print() {
+    var arr = [];
+    var current = this.head;
+
+    while (current) {
+      arr.push(current.val);
+      current = current.next;
+    }
+    console.log(arr);
+  }
 }
 
 var list = new SinglyLinkedList();
@@ -220,5 +257,5 @@ list.push("100");
 list.push("201");
 list.push("250");
 list.push("350");
-list.remove(2);
-console.log(list.get(2));
+list.reverse();
+list.print();
