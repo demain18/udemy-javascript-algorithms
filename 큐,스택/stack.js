@@ -17,7 +17,7 @@ class Stack {
     // 새로운 노드를 생성해준다.
     var newNode = new Node(val);
 
-    // 만약 리스트가 비어있다면
+    // 만약 스택이 비어있다면
     if (!this.first) {
       // this.first, this.last를 newNode로 초기화시킨다.
       this.first = newNode;
@@ -39,7 +39,7 @@ class Stack {
 
   // 스택 제거하기
   pop() {
-    // 만약 리스트가 비어있다면 null을 반환한다.
+    // 만약 스택이 비어있다면 null을 반환한다.
     if (!this.first) return null;
 
     // 만약 리스트에 값이 하나만 있다면 last를 null로 초기화시킨다.
