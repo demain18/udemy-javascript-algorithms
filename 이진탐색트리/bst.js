@@ -65,6 +65,37 @@ class BinarySearchTree {
       }
     }
   }
+
+  find(value) {
+    // 만약 this.root가 비어있다면 false를 반환한다.
+    if (this.root === null) return false;
+
+    // current, found를 선언해준다.
+    var current = this.root;
+    var found = false;
+
+    // current가 존재하고, found가 false라면 반복문을 실행한다.
+    while (current && !found) {
+      // 만약 value가 current.value보다 작다면
+      if (value < current.value) {
+        // current를 current.left로 초기화시킨다.
+        current = current.left;
+      }
+      // 만약 value가 current.value보다 크다면
+      else if (value > current.value) {
+        // current를 current.right로 초기화시킨다.
+        current = current.right;
+      }
+      // 둘다 아닐경우
+      else {
+        // found를 true로 변경한다.
+        found = true;
+      }
+    }
+
+    // 만약 found가 거짓이라면 false를 반환하고, 참이라면 true를 반환한다.
+    return !found ? false : true;
+  }
 }
 
 var tree = new BinarySearchTree();
@@ -72,4 +103,5 @@ tree.insert(5);
 tree.insert(7);
 tree.insert(12);
 tree.insert(4);
-console.log(tree, tree.root.right);
+console.log(tree.find(12));
+console.log(tree.find(15));
