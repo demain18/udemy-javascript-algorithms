@@ -154,5 +154,5 @@ tree.insert(3);
 tree.insert(8);
 tree.insert(20);
 console.dir(tree, { depth: null });
-console.log(tree.bfs());
-console.log(tree.dfsPreOrder());
+console.log(tree.bfs()); // [ 10, 6, 15, 3, 8, 20 ]
+console.log(tree.dfsPreOrder()); // [ 10, 6, 3, 8, 15, 20 ]
