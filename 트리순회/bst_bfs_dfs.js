@@ -166,6 +166,29 @@ class BinarySearchTree {
     // data를 반환한다.
     return data;
   }
+
+  dfsInOrder() {
+    // data를 선언하고 빈 배열로 초기화시킨다.
+    var data = [];
+
+    // 재귀 함수인 traverse를 선언한다.
+    function traverse(node) {
+      // 만약 node.left가 존재한다면 traverse(node.left)를 재귀로 실행시킨다.
+      if (node.left) traverse(node.left);
+
+      // data에 node.value를 삽입해준다.
+      data.push(node.value);
+
+      // 만약 node.right가 존재한다면 traverse(node.right)를 재귀로 실행시킨다.
+      if (node.right) traverse(node.right);
+    }
+
+    // traverse 재귀 함수를 실행한다.
+    traverse(this.root);
+
+    // data를 반환한다.
+    return data;
+  }
 }
 
 var tree = new BinarySearchTree();
@@ -176,6 +199,12 @@ tree.insert(3);
 tree.insert(8);
 tree.insert(20);
 console.dir(tree, { depth: null });
+/**
+ *        10
+ *     6     15
+ *  3    8      20
+ */
 console.log(tree.bfs()); // [ 10, 6, 15, 3, 8, 20 ]
 console.log(tree.dfsPreOrder()); // [ 10, 6, 3, 8, 15, 20 ]
 console.log(tree.dfsPostOrder()); // [ 3, 8, 6, 20, 15, 10 ]
+console.log(tree.dfsInOrder()); // [ 3, 6, 8, 10, 15, 20 ]
