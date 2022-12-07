@@ -205,6 +205,9 @@ console.dir(tree, { depth: null });
  *  3    8      20
  */
 console.log(tree.bfs()); // [ 10, 6, 15, 3, 8, 20 ]
+// 전위 탐색
 console.log(tree.dfsPreOrder()); // [ 10, 6, 3, 8, 15, 20 ]
+// 후위 탐색
 console.log(tree.dfsPostOrder()); // [ 3, 8, 6, 20, 15, 10 ]
+// 중위 탐색
 console.log(tree.dfsInOrder()); // [ 3, 6, 8, 10, 15, 20 ]
