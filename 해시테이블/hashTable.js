@@ -28,18 +28,43 @@ class HashTable {
     // key를 hash함수에 넣어서 index를 반환받는다.
     let index = this._hash(key);
 
-    // 만약 this.keyMap에서 index에 위치한 요소가 비어있다면 배열로 초기화시킨다.
+    // 만약 this.keyMap[index]이 비어있다면
     if (!this.keyMap[index]) {
+      // 해당 요소를 배열로 초기화시킨다.
       this.keyMap[index] = [];
     }
 
-    // this.keyMap에서 index위치에 객체를 삽입한다.
+    // this.keyMap[index]에 객체를 삽입한다.
     this.keyMap[index].push([key, val]);
+  }
+
+  get(key) {
+    // key를 hash함수에 넣어서 index를 반환받는다.
+    let index = this._hash(key);
+
+    // 만약 this.keyMap[index]값이 존재한다면
+    if (this.keyMap[index]) {
+      // this.keyMap[index]의 길이만큼 반복문을 실행한다.
+      for (let i = 0; i < this.keyMap[index].length; i++) {
+        // 만약 객체의 키가 key와 동일하다면
+        if (this.keyMap[index][i][0] === key) {
+          // 객체의 값을 반환한다.
+          return this.keyMap[index][i][1];
+        }
+      }
+    }
+
+    return undefined;
   }
 }
 
 let ht = new HashTable();
-ht.set("musecle car", "ford mustang");
+ht.set("muscle car", "ford mustang");
 ht.set("suv", "bmw x5");
-ht.set("supercar", "ford mustang");
+ht.set("supercar", "ferrari f8 tuributo");
+ht.set("sedan", "benz s class coupe");
+ht.set("motocycle", "kawasaki ninja 400");
+ht.set("sportcar", "forsche 911 turbo s");
+
 console.log(ht.keyMap);
+console.log(ht.get("supercar"));
