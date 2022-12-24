@@ -57,25 +57,6 @@ class HashTable {
     return undefined;
   }
 
-  values() {
-    // 배열을 선언해준다.
-    let vaulesArr = [];
-    // this.keyMap의 길이만큼 반복문을 실행한다.
-    for (let i = 0; i < this.keyMap.length; i++) {
-      // 만약 요소가 있다면
-      if (this.keyMap[i]) {
-        // this.keyMap[i]의 길이만큼 반복문을 실행한다.
-        for (let j = 0; j < this.keyMap[i].length; j++) {
-          // valuesArr에 요소를 삽입한다.
-          vaulesArr.push(this.keyMap[i][j][1]);
-        }
-      }
-    }
-
-    // vaulesArr에서 중복 요소를 제거하고 반환해준다.
-    return [...new Set(vaulesArr)];
-  }
-
   keys() {
     // 배열을 선언해준다.
     let keysArr = [];
@@ -93,6 +74,25 @@ class HashTable {
 
     // keysArr에서 중복 요소를 제거하고 반환해준다.
     return [...new Set(keysArr)];
+  }
+
+  values() {
+    // 배열을 선언해준다.
+    let vaulesArr = [];
+    // this.keyMap의 길이만큼 반복문을 실행한다.
+    for (let i = 0; i < this.keyMap.length; i++) {
+      // 만약 요소가 있다면
+      if (this.keyMap[i]) {
+        // this.keyMap[i]의 길이만큼 반복문을 실행한다.
+        for (let j = 0; j < this.keyMap[i].length; j++) {
+          // valuesArr에 요소를 삽입한다.
+          vaulesArr.push(this.keyMap[i][j][1]);
+        }
+      }
+    }
+
+    // vaulesArr에서 중복 요소를 제거하고 반환해준다.
+    return [...new Set(vaulesArr)];
   }
 }
 
