@@ -56,15 +56,56 @@ class HashTable {
 
     return undefined;
   }
+
+  values() {
+    // 배열을 선언해준다.
+    let vaulesArr = [];
+    // this.keyMap의 길이만큼 반복문을 실행한다.
+    for (let i = 0; i < this.keyMap.length; i++) {
+      // 만약 요소가 있다면
+      if (this.keyMap[i]) {
+        // this.keyMap[i]의 길이만큼 반복문을 실행한다.
+        for (let j = 0; j < this.keyMap[i].length; j++) {
+          // valuesArr에 요소를 삽입한다.
+          vaulesArr.push(this.keyMap[i][j][1]);
+        }
+      }
+    }
+
+    // vaulesArr에서 중복 요소를 제거하고 반환해준다.
+    return [...new Set(vaulesArr)];
+  }
+
+  keys() {
+    // 배열을 선언해준다.
+    let keysArr = [];
+    // this.keyMap의 길이만큼 반복문을 실행한다.
+    for (let i = 0; i < this.keyMap.length; i++) {
+      // 만약 요소가 있다면
+      if (this.keyMap[i]) {
+        // this.keyMap[i]의 길이만큼 반복문을 실행한다.
+        for (let j = 0; j < this.keyMap[i].length; j++) {
+          // valuesArr에 요소를 삽입한다.
+          keysArr.push(this.keyMap[i][j][0]);
+        }
+      }
+    }
+
+    // keysArr에서 중복 요소를 제거하고 반환해준다.
+    return [...new Set(keysArr)];
+  }
 }
 
 let ht = new HashTable();
 ht.set("muscle car", "ford mustang");
 ht.set("suv", "bmw x5");
+ht.set("suv", "bmw x5");
 ht.set("supercar", "ferrari f8 tuributo");
 ht.set("sedan", "benz s class coupe");
 ht.set("motocycle", "kawasaki ninja 400");
 ht.set("sportcar", "forsche 911 turbo s");
+ht.set("sportcar", "forsche 911 turbo s");
 
-console.log(ht.keyMap);
-console.log(ht.get("supercar"));
+// console.log(ht.keyMap);
+console.log(ht.keys());
+console.log(ht.values());
