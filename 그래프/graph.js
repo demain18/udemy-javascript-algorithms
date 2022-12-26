@@ -6,9 +6,19 @@ class Graph {
   addVertex(key) {
     if (!this.list[key]) this.list[key] = [];
   }
+
+  addEdge(vertex1, vertex2) {
+    if (this.list[vertex1] && this.list[vertex2]) {
+      this.list[vertex1].push(vertex2);
+      this.list[vertex2].push(vertex1);
+    }
+  }
 }
 
 let gh = new Graph();
-gh.addVertex("john wick");
-gh.addVertex("sellby thomas");
+gh.addVertex("Tokyo");
+gh.addVertex("Dallas");
+gh.addVertex("Newyork");
+gh.addEdge("Tokyo", "Dallas");
+gh.addEdge("Dallas", "Newyork");
 console.log(gh);
