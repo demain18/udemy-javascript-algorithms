@@ -4,7 +4,7 @@ class Graph {
   }
 
   addVertex(key) {
-    this.list[key] = [];
+    if (!this.list[key]) this.list[key] = [];
   }
 }
 
