@@ -106,6 +106,6 @@ ht.set("motocycle", "kawasaki ninja 400");
 ht.set("sportcar", "forsche 911 turbo s");
 ht.set("sportcar", "forsche 911 turbo s");
 
-// console.log(ht.keyMap);
+console.log(ht.keyMap);
 console.log(ht.keys());
 console.log(ht.values());
