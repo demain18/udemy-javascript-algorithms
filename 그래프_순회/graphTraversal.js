@@ -118,9 +118,40 @@ class GraphTraversal {
     // result를 반한다.
     return result;
   }
+
+  bfs(start) {
+    // queue, result, visited을 선언해준다.
+    const queue = [start];
+    const result = [];
+    const visited = {};
+    let currentVertex;
+
+    // queue에 값이 있는한 반복문을 수행한다.
+    while (queue.length > 0) {
+      // queue에서 가장 앞에 있는 요소로 currentVertex를 초기화시킨다.
+      currentVertex = queue.shift();
+      // result에 currentVertex를 삽입한다.
+      result.push(currentVertex);
+
+      // this.list[currentVertex]의 인접점 리스트로 반복문을 수행한다.
+      this.list[currentVertex].map((neighbor) => {
+        // 만약 인접점(neihbor)을 방문한 적이 없다면
+        if (!visited[neighbor]) {
+          // 인접점을 방문처리 해준다.
+          visited[neighbor] = true;
+          // queue에 인접점을 삽입한다.
+          queue.push(neighbor);
+        }
+      });
+    }
+
+    // result를 반환한다.
+    return result;
+  }
 }
 
 let g = new GraphTraversal();
+
 g.addVertex("A");
 g.addVertex("B");
 g.addVertex("C");
@@ -137,5 +168,6 @@ g.addEdge("D", "F");
 g.addEdge("E", "F");
 
 console.log(g.list);
-console.log("재귀형 DFS 그래프 순회", g.dfsRecursive("A"));
-console.log("반복형 DFS 그래프 순회", g.dfsIterative("A"));
+console.log("재귀형 DFS 그래프 순회: ", g.dfsRecursive("A"));
+console.log("반복형 DFS 그래프 순회: ", g.dfsIterative("A"));
+console.log("BFS 그래프 순회: ", g.bfs("A"));
