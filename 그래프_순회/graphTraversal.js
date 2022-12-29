@@ -60,16 +60,15 @@ class GraphTraversal {
 
     // 헬퍼 함수를 선언해준다.
     function dfs(vertex) {
-      console.log(visited);
-      // 만약 정점(vertex)이 존재하지 않는다면 null을 반환한다.
-      if (!vertex) return null;
+      // 만약 정점(vertex)이 존재하지 않는다면 함수를 종료한다.
+      if (!vertex) return;
 
       // 정점을 visited에 참으로 저장한다.
       visited[vertex] = true;
       // 정점을 result에 삽입한다.
       result.push(vertex);
 
-      // listCopy를 반복문으로 실행한다.
+      // vertex의 인접점 리스트를 반복문으로 실행한다.
       listCopy[vertex].map((neighbor) => {
         // 만약 인접점(neighbor)을 방문한 적이 없다면
         if (!visited[neighbor]) {

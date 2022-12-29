@@ -199,15 +199,14 @@ tree.insert(3);
 tree.insert(8);
 tree.insert(20);
 console.dir(tree, { depth: null });
+
 /**
  *        10
  *     6     15
  *  3    8      20
  */
-console.log(tree.bfs()); // [ 10, 6, 15, 3, 8, 20 ]
-// 전위 탐색
-console.log(tree.dfsPreOrder()); // [ 10, 6, 3, 8, 15, 20 ]
-// 후위 탐색
-console.log(tree.dfsPostOrder()); // [ 3, 8, 6, 20, 15, 10 ]
-// 중위 탐색
-console.log(tree.dfsInOrder()); // [ 3, 6, 8, 10, 15, 20 ]
+
+console.log("너비 우선 탐색(BFS)", tree.bfs());
+console.log("깊이 우선 탐색(DFS) 전위 탐색", tree.dfsPreOrder());
+console.log("깊이 우선 탐색(DFS) 후위 탐색", tree.dfsPostOrder());
+console.log("깊이 우선 탐색(DFS) 중위 탐색", tree.dfsInOrder());
