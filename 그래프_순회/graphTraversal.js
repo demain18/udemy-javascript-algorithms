@@ -84,6 +84,40 @@ class GraphTraversal {
     // result을 반환한다.
     return result;
   }
+
+  // 순환형으로 DFS 순회하기
+  dfsIterative(start) {
+    // stack, result, visited를 선언해준다.
+    const stack = [start];
+    const result = [];
+    const visited = {};
+    let currentVertex;
+
+    // start정점을 방문처리 해준다.
+    visited[start] = true;
+
+    // stack에 값이 있는한 반북문을 수행한다.
+    while (stack.length > 0) {
+      // stack에서 가장 뒤에 있는 요소로 currentVertex를 초기화시킨다.
+      currentVertex = stack.pop();
+      // currentVertex를 result에 삽입한다.
+      result.push(currentVertex);
+
+      // this.list[currentVertex]의 인접점 리스트로 반복문을 수행한다.
+      this.list[currentVertex].map((neighbor) => {
+        // 만약 인접점(neihbor)을 방문한 적이 없다면
+        if (!visited[neighbor]) {
+          // 인접점을 방문처리 해준다.
+          visited[neighbor] = true;
+          // stack에 인접점을 삽입한다.
+          stack.push(neighbor);
+        }
+      });
+    }
+
+    // result를 반한다.
+    return result;
+  }
 }
 
 let g = new GraphTraversal();
@@ -103,4 +137,5 @@ g.addEdge("D", "F");
 g.addEdge("E", "F");
 
 console.log(g.list);
-console.log(g.dfsRecursive("A"));
+console.log("재귀형 DFS 그래프 순회", g.dfsRecursive("A"));
+console.log("반복형 DFS 그래프 순회", g.dfsIterative("A"));
