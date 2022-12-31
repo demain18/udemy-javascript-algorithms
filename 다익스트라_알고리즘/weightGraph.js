@@ -1,4 +1,4 @@
-class GraphTraversal {
+class WeightGraph {
   constructor() {
     this.list = {};
   }
@@ -26,7 +26,7 @@ class GraphTraversal {
   }
 }
 
-let g = new GraphTraversal();
+let g = new WeightGraph();
 
 g.addVertex("A");
 g.addVertex("B");
